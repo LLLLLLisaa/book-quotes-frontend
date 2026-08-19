@@ -1,0 +1,16 @@
+.login-container {
+    width: 400px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+button {
+    cursor: pointer;
+}
