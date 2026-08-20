@@ -8,6 +8,10 @@ export interface RegisterRequest {
   password: string;
 }
 
+export interface ApiResponse {
+    message: string;
+  }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,8 +21,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  register(request: RegisterRequest): Observable<any> {
-    return this.http.post(
+  register(request: RegisterRequest): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(
       `${this.apiUrl}/register`,
       request
     );

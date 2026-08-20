@@ -54,18 +54,18 @@ export class RegisterComponent {
     const request = this.registerForm.getRawValue();
 
     this.authService.register(request).subscribe({
-      next: () => {
-        this.message = 'Registration successful';
-        this.router.navigate(['/login']);
-      },
+        next: (response) => {
+            alert(response.message);
+          
+            this.registerForm.reset();
+          
+            this.router.navigate(['/login']);
+          },
 
-      error: (error) => {
-        if (error.status === 400) {
-          this.message = 'Email already exists';
-        } else {
-          this.message = 'Registration failed';
-        }
-      }
+          error: (error) => {
+            alert(error.error.message);
+            this.registerForm.controls.email.reset();
+          }
     });
   }
 }
