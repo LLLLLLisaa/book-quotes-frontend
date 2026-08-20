@@ -1,0 +1,97 @@
+<div class="register-container">
+
+    <h2>Register</h2>
+  
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  
+      <div>
+        <label>Full name</label>
+  
+        <input
+          type="text"
+          formControlName="fullName"
+        >
+  
+        @if (
+          registerForm.controls.fullName.touched &&
+          registerForm.controls.fullName.hasError('required')
+        ) {
+          <p class="error">
+            Full name is required
+          </p>
+        }
+      </div>
+  
+  
+      <div>
+        <label>Email</label>
+  
+        <input
+          type="email"
+          formControlName="email"
+        >
+  
+        @if (
+          registerForm.controls.email.touched &&
+          registerForm.controls.email.hasError('required')
+        ) {
+          <p class="error">
+            Email is required
+          </p>
+        }
+  
+        @if (
+          registerForm.controls.email.touched &&
+          registerForm.controls.email.hasError('email')
+        ) {
+          <p class="error">
+            Please enter a valid email
+          </p>
+        }
+      </div>
+  
+  
+      <div>
+        <label>Password</label>
+  
+        <input
+          type="password"
+          formControlName="password"
+        >
+  
+        @if (
+          registerForm.controls.password.touched &&
+          registerForm.controls.password.hasError('required')
+        ) {
+          <p class="error">
+            Password is required
+          </p>
+        }
+  
+        @if (
+          registerForm.controls.password.touched &&
+          registerForm.controls.password.hasError('minlength')
+        ) {
+          <p class="error">
+            Password must be at least 6 characters
+          </p>
+        }
+      </div>
+  
+  
+      <button type="submit">
+        Register
+      </button>
+  
+    </form>
+  
+    @if (message) {
+      <p>{{ message }}</p>
+    }
+  
+    <p>
+      Already have an account?
+      <a routerLink="/login">Login</a>
+    </p>
+  
+  </div>
