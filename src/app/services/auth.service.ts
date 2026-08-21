@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
+
+interface TokenPayload {
+    id: string;
+    email: string;
+    fullName: string;
+  }
+
 
 export interface RegisterRequest {
   fullName: string;
@@ -42,5 +50,17 @@ export class AuthService {
       `${this.apiUrl}/login`,
       request
     );
+  }
+
+  getFullName(): string {
+    const token = localStorage.getItem('token');
+  
+    if (!token) {
+      return '';
+    }
+  
+    const decoded = jwtDecode<TokenPayload>(token);
+  
+    return decoded.fullName;
   }
 }

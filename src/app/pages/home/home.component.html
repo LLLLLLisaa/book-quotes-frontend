@@ -1,3 +1,33 @@
+<app-header [showNavigation]="true"></app-header>
+
 <div class="home-container">
-  <h2>Startsiden</h2>
+
+    <div class="page-header">
+
+        <h2>Books</h2>
+
+        <button
+            class="add-button"
+            routerLink="/books/add">
+            Add Book
+        </button>
+
+    </div>
+
+    <hr>
+
+    <div class="book-list">
+
+        <p>No books yet.</p>
+
+    </div>
+
+    <div class="quotes-link">
+
+        <a routerLink="/quotes">
+            My Quotes →
+        </a>
+
+    </div>
+
 </div>
