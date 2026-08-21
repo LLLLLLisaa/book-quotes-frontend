@@ -1,52 +1,59 @@
-<div class="login-container">
+<div class="page">
 
-  <h1>Book Quotes</h1>
+  <h1 class="site-title">Book & Quotes</h1>
 
-  <h2>Login</h2>
+  <div class="login-card">
 
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="login-side">
 
-    <label>Email</label>
-    <input
-      type="email"
-      formControlName="email"
-    >
+      <h2>Login</h2>
 
-    @if (
-      loginForm.controls.email.touched &&
-      loginForm.controls.email.hasError('required')
-    ) {
-      <p class="error">Email is required</p>
-    }
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-    @if (
-      loginForm.controls.email.touched &&
-      loginForm.controls.email.hasError('email')
-    ) {
-      <p class="error">Please enter a valid email</p>
-    }
+        <label>User</label>
+        <input
+          type="email"
+          formControlName="email"
+        >
 
-    <label>Password</label>
-    <input
-      type="password"
-      formControlName="password"
-    >
+        @if (
+          loginForm.controls.email.touched &&
+          loginForm.controls.email.invalid
+        ) {
+          <p class="error">Please enter a valid user email.</p>
+        }
 
-    @if (
-      loginForm.controls.password.touched &&
-      loginForm.controls.password.hasError('required')
-    ) {
-      <p class="error">Password is required</p>
-    }
+        <label>Password</label>
+        <input
+          type="password"
+          formControlName="password"
+        >
 
-    <button type="submit">Login</button>
+        @if (
+          loginForm.controls.password.touched &&
+          loginForm.controls.password.hasError('required')
+        ) {
+          <p class="error">Password is required.</p>
+        }
 
-  </form>
+        <button class="login-button" type="submit">
+          Login
+        </button>
 
-  <hr>
+      </form>
 
-  <p>Don't have an account?</p>
+    </div>
 
-  <button routerLink="/register">Register</button>
+    <div class="register-side">
+      <h2>New here?</h2>
+    
+      <p>Create an account to save your books and quotes.</p>
+    
+      <a class="register-link" routerLink="/register">
+        Create account
+      </a>
+    </div>
+
+  </div>
 
 </div>

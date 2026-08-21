@@ -64,7 +64,7 @@ export class RegisterComponent {
 
           error: (error) => {
             alert(error.error.message);
-            this.registerForm.controls.email.reset();
+            this.registerForm.reset();
           }
     });
   }

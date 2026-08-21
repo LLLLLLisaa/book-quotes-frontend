@@ -49,6 +49,7 @@ export class LoginComponent {
 
       error: (error) => {
         alert(error.error.message);
+        this.loginForm.controls.password.reset();
       }
     });
   }
