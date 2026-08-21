@@ -1,21 +1,52 @@
 <div class="login-container">
 
-    <h1>Book Quotes</h1>
-  
-    <h2>Login</h2>
-  
+  <h1>Book Quotes</h1>
+
+  <h2>Login</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
     <label>Email</label>
-    <input type="email">
-  
+    <input
+      type="email"
+      formControlName="email"
+    >
+
+    @if (
+      loginForm.controls.email.touched &&
+      loginForm.controls.email.hasError('required')
+    ) {
+      <p class="error">Email is required</p>
+    }
+
+    @if (
+      loginForm.controls.email.touched &&
+      loginForm.controls.email.hasError('email')
+    ) {
+      <p class="error">Please enter a valid email</p>
+    }
+
     <label>Password</label>
-    <input type="password">
-  
-    <button>Login</button>
-  
-    <hr>
-  
-    <p>Don't have an account?</p>
-  
-    <button routerLink="/register">Register</button>
-  
-  </div>
+    <input
+      type="password"
+      formControlName="password"
+    >
+
+    @if (
+      loginForm.controls.password.touched &&
+      loginForm.controls.password.hasError('required')
+    ) {
+      <p class="error">Password is required</p>
+    }
+
+    <button type="submit">Login</button>
+
+  </form>
+
+  <hr>
+
+  <p>Don't have an account?</p>
+
+  <button routerLink="/register">Register</button>
+
+</div>

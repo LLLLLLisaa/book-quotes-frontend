@@ -12,6 +12,15 @@ export interface ApiResponse {
     message: string;
   }
 
+export interface LoginRequest {
+email: string;
+password: string;
+}
+
+export interface LoginResponse {
+token: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +33,13 @@ export class AuthService {
   register(request: RegisterRequest): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(
       `${this.apiUrl}/register`,
+      request
+    );
+  }
+
+  login(request: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(
+      `${this.apiUrl}/login`,
       request
     );
   }
