@@ -1,6 +1,6 @@
-<div class="page">
+<app-header [showNavigation]="false"></app-header>
 
-  <h1 class="site-title">Book & Quotes</h1>
+<div class="page">
 
   <div class="login-card">
 
@@ -11,6 +11,7 @@
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
         <label>User</label>
+
         <input
           type="email"
           formControlName="email"
@@ -20,10 +21,13 @@
           loginForm.controls.email.touched &&
           loginForm.controls.email.invalid
         ) {
-          <p class="error">Please enter a valid user email.</p>
+          <p class="error">
+            Please enter a valid user email.
+          </p>
         }
 
         <label>Password</label>
+
         <input
           type="password"
           formControlName="password"
@@ -33,10 +37,14 @@
           loginForm.controls.password.touched &&
           loginForm.controls.password.hasError('required')
         ) {
-          <p class="error">Password is required.</p>
+          <p class="error">
+            Password is required.
+          </p>
         }
 
-        <button class="login-button" type="submit">
+        <button
+          class="login-button"
+          type="submit">
           Login
         </button>
 
@@ -45,13 +53,17 @@
     </div>
 
     <div class="register-side">
+
       <h2>New here?</h2>
-    
+
       <p>Create an account to save your books and quotes.</p>
-    
-      <a class="register-link" routerLink="/register">
+
+      <a
+        class="register-link"
+        routerLink="/register">
         Create account
       </a>
+
     </div>
 
   </div>
