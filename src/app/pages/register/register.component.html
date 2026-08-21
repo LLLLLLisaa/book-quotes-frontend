@@ -1,97 +1,151 @@
 <app-header [showNavigation]="false"></app-header>
 
-<div class="register-container">
-  
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  
-      <div>
-        <label>Full name</label>
-  
-        <input
-          type="text"
-          formControlName="fullName"
-        >
-  
-        @if (
-          registerForm.controls.fullName.touched &&
-          registerForm.controls.fullName.hasError('required')
-        ) {
-          <p class="error">
-            Full name is required
-          </p>
-        }
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-12 col-md-8 col-lg-6">
+
+      <div class="card shadow-sm border-0">
+
+        <div class="card-body p-4 p-md-5">
+
+          <h2 class="mb-4">Register</h2>
+
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+            <div class="mb-3">
+
+              <label class="form-label">
+                <i class="fa-solid fa-user me-2"></i>
+                Full name
+              </label>
+
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                formControlName="fullName"
+              >
+
+              @if (
+                registerForm.controls.fullName.touched &&
+                registerForm.controls.fullName.hasError('required')
+              ) {
+                <div class="text-danger small mt-1">
+                  Full name is required
+                </div>
+              }
+
+            </div>
+
+
+            <div class="mb-3">
+
+              <label class="form-label">
+                <i class="fa-solid fa-envelope me-2"></i>
+                Email
+              </label>
+
+              <input
+                type="email"
+                class="form-control form-control-lg"
+                formControlName="email"
+              >
+
+              @if (
+                registerForm.controls.email.touched &&
+                registerForm.controls.email.hasError('required')
+              ) {
+                <div class="text-danger small mt-1">
+                  Email is required
+                </div>
+              }
+
+              @if (
+                registerForm.controls.email.touched &&
+                registerForm.controls.email.hasError('email')
+              ) {
+                <div class="text-danger small mt-1">
+                  Please enter a valid email
+                </div>
+              }
+
+            </div>
+
+
+            <div class="mb-4">
+
+              <label class="form-label">
+                <i class="fa-solid fa-lock me-2"></i>
+                Password
+              </label>
+
+              <input
+                type="password"
+                class="form-control form-control-lg"
+                formControlName="password"
+              >
+
+              @if (
+                registerForm.controls.password.touched &&
+                registerForm.controls.password.hasError('required')
+              ) {
+                <div class="text-danger small mt-1">
+                  Password is required
+                </div>
+              }
+
+              @if (
+                registerForm.controls.password.touched &&
+                registerForm.controls.password.hasError('minlength')
+              ) {
+                <div class="text-danger small mt-1">
+                  Password must be at least 6 characters
+                </div>
+              }
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="btn btn-success btn-lg w-100">
+
+              <i class="fa-solid fa-user-plus me-2"></i>
+              Register
+
+            </button>
+
+          </form>
+
+
+          @if (message) {
+            <div class="alert alert-info mt-3">
+              {{ message }}
+            </div>
+          }
+
+
+          <div class="text-center mt-4">
+
+            <span class="text-secondary">
+              Already have an account?
+            </span>
+
+            <a
+              routerLink="/login"
+              class="ms-1 text-decoration-none">
+              Login
+            </a>
+
+          </div>
+
+        </div>
+
       </div>
-  
-  
-      <div>
-        <label>Email</label>
-  
-        <input
-          type="email"
-          formControlName="email"
-        >
-  
-        @if (
-          registerForm.controls.email.touched &&
-          registerForm.controls.email.hasError('required')
-        ) {
-          <p class="error">
-            Email is required
-          </p>
-        }
-  
-        @if (
-          registerForm.controls.email.touched &&
-          registerForm.controls.email.hasError('email')
-        ) {
-          <p class="error">
-            Please enter a valid email
-          </p>
-        }
-      </div>
-  
-  
-      <div>
-        <label>Password</label>
-  
-        <input
-          type="password"
-          formControlName="password"
-        >
-  
-        @if (
-          registerForm.controls.password.touched &&
-          registerForm.controls.password.hasError('required')
-        ) {
-          <p class="error">
-            Password is required
-          </p>
-        }
-  
-        @if (
-          registerForm.controls.password.touched &&
-          registerForm.controls.password.hasError('minlength')
-        ) {
-          <p class="error">
-            Password must be at least 6 characters
-          </p>
-        }
-      </div>
-  
-  
-      <button type="submit">
-        Register
-      </button>
-  
-    </form>
-  
-    @if (message) {
-      <p>{{ message }}</p>
-    }
-  
-    <p>
-      Already have an account?
-      <a routerLink="/login">Login</a>
-    </p>
-  
+
+    </div>
+
   </div>
+
+</div>

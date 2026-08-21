@@ -1,68 +1,115 @@
 <app-header [showNavigation]="false"></app-header>
 
-<div class="page">
+<div class="container py-5">
 
-  <div class="login-card">
+  <div class="row justify-content-center">
 
-    <div class="login-side">
+    <div class="col-12 col-lg-9">
 
-      <h2>Login</h2>
+      <div class="card shadow-sm border-0">
 
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="card-body p-4 p-md-5">
 
-        <label>User</label>
+          <div class="row g-5">
 
-        <input
-          type="email"
-          formControlName="email"
-        >
+            <!-- Login -->
+            <div class="col-12 col-md-6 border-end-md">
 
-        @if (
-          loginForm.controls.email.touched &&
-          loginForm.controls.email.invalid
-        ) {
-          <p class="error">
-            Please enter a valid user email.
-          </p>
-        }
+              <h2 class="mb-4">Login</h2>
 
-        <label>Password</label>
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-        <input
-          type="password"
-          formControlName="password"
-        >
+                <div class="mb-3">
 
-        @if (
-          loginForm.controls.password.touched &&
-          loginForm.controls.password.hasError('required')
-        ) {
-          <p class="error">
-            Password is required.
-          </p>
-        }
+                  <label class="form-label">
+                    <i class="fa-solid fa-user me-2"></i>
+                    User
+                  </label>
 
-        <button
-          class="login-button"
-          type="submit">
-          Login
-        </button>
+                  <input
+                    type="email"
+                    class="form-control form-control-lg"
+                    formControlName="email"
+                  >
 
-      </form>
+                  @if (
+                    loginForm.controls.email.touched &&
+                    loginForm.controls.email.invalid
+                  ) {
+                    <div class="text-danger small mt-1">
+                      Please enter a valid user email.
+                    </div>
+                  }
 
-    </div>
+                </div>
 
-    <div class="register-side">
 
-      <h2>New here?</h2>
+                <div class="mb-4">
 
-      <p>Create an account to save your books and quotes.</p>
+                  <label class="form-label">
+                    <i class="fa-solid fa-lock me-2"></i>
+                    Password
+                  </label>
 
-      <a
-        class="register-link"
-        routerLink="/register">
-        Create account
-      </a>
+                  <input
+                    type="password"
+                    class="form-control form-control-lg"
+                    formControlName="password"
+                  >
+
+                  @if (
+                    loginForm.controls.password.touched &&
+                    loginForm.controls.password.hasError('required')
+                  ) {
+                    <div class="text-danger small mt-1">
+                      Password is required.
+                    </div>
+                  }
+
+                </div>
+
+
+                <button
+                  type="submit"
+                  class="btn btn-success btn-lg w-100">
+
+                  <i class="fa-solid fa-right-to-bracket me-2"></i>
+                  Login
+
+                </button>
+
+              </form>
+
+            </div>
+
+
+            <!-- Register -->
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+
+              <h2 class="mb-3">New here?</h2>
+
+              <p class="text-secondary mb-4">
+                Create an account to save your books and quotes.
+              </p>
+
+              <div>
+                <a
+                    routerLink="/register"
+                    class="text-decoration-none fw-semibold">
+
+                    Create account
+                    <i class="fa-solid fa-arrow-right ms-1"></i>
+
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
