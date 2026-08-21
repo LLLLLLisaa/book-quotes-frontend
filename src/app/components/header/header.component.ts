@@ -1,11 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { jwtDecode } from 'jwt-decode';
+import { Location } from '@angular/common';
 import { AuthService } from '@/services/auth.service';
 
-interface TokenPayload {
-  name: string;
-}
 
 
 @Component({
@@ -19,7 +16,11 @@ export class HeaderComponent {
     @Input() showNavigation = false;
     fullName = '';
 
-    constructor(private authService: AuthService) {
+    constructor(private authService: AuthService,private location: Location) {
       this.fullName = this.authService.getFullName();
+    }
+
+    goBack(): void {
+      this.location.back();
     }
   }
