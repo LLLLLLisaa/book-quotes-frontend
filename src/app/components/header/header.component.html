@@ -1,71 +1,42 @@
-<header class="bg-light border-bottom py-3">
+<header class="bg-light border-bottom">
 
-  <div class="container">
+  <div class="container-fluid px-3 py-3">
 
     @if (showNavigation) {
-
-      <div class="d-flex justify-content-end mb-3">
-
+      <div class="d-flex justify-content-end pe-2 mb-2">
         <div class="d-flex align-items-center gap-3">
-
           <span class="fw-semibold">
-              Welcome, {{ fullName }}
+            Welcome, {{ fullName }}
           </span>
-      
+
           <a href="#" class="logout-link">
-      
-              <i class="fa-solid fa-right-from-bracket me-1"></i>
-      
-              Logout
-      
+            <i class="fa-solid fa-right-from-bracket me-1"></i>
+            Logout
           </a>
-      
         </div>
-
       </div>
-
     }
 
-    <div class="header-bottom">
+    <div class="header-main">
 
       @if (showNavigation) {
-
-        <a
-          href="#"
-          class="btn btn-outline-secondary btn-sm">
-
-          <i class="fa-solid fa-arrow-left me-1"></i>
-
+        <a href="#" class="nav-link-custom back-link fs-6">
+          <i class="fa-solid fa-arrow-left me-2"></i>
           Back
-
         </a>
-
-      } @else {
-
-        <div></div>
-
       }
 
-      <h1 class="m-0 fw-bold text-center">
+      <h1 class="m-0 fw-bold">
         Book & Quotes
       </h1>
 
       @if (showNavigation) {
-
         <a
-          routerLink="/home"
-          class="btn btn-outline-primary btn-sm">
-
-          <i class="fa-solid fa-house me-1"></i>
-
+          [routerLink]="routes.home"
+          class="nav-link-custom home-link fs-6">
+          <i class="fa-solid fa-house me-2"></i>
           Home
-
         </a>
-
-      } @else {
-
-        <div></div>
-
       }
 
     </div>

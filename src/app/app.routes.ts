@@ -7,46 +7,57 @@ import { BookFormComponent } from '@/pages/book-form/book-form.component';
 import { QuotesComponent } from '@/pages/quotes/quotes.component';
 import { QuoteFormComponent } from '@/pages/quote-form/quote-form.component';
 
+export const ROUTES = {
+  login: 'login',
+  register: 'register',
+  home: 'books',
+  bookAdd: 'books/add',
+  bookEdit: 'books/edit/:id',
+  quotes: 'quotes',
+  quoteAdd: 'quotes/add',
+  quoteEdit: 'quotes/edit/:id'
+} as const;
+
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: ROUTES.login,
     pathMatch: 'full'
   },
   {
-    path: 'login',
+    path: ROUTES.login,
     component: LoginComponent
   },
   {
-    path: 'register',
+    path: ROUTES.register,
     component: RegisterComponent
   },
   {
-    path: 'home',
+    path: ROUTES.home,
     component: HomeComponent
   },
   {
-    path: 'books/add',
+    path: ROUTES.bookAdd,
     component: BookFormComponent
   },
   {
-    path: 'books/edit/:id',
+    path: ROUTES.bookEdit,
     component: BookFormComponent
   },
   {
-    path: 'quotes',
+    path: ROUTES.quotes,
     component: QuotesComponent
   },
   {
-    path: 'quotes/add',
+    path: ROUTES.quoteAdd,
     component: QuoteFormComponent
   },
   {
-    path: 'quotes/edit/:id',
+    path: ROUTES.quoteEdit,
     component: QuoteFormComponent
   },
   {
     path: '**',
-    redirectTo: 'login'
+    redirectTo: ROUTES.login
   }
 ];

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '@/services/auth.service';
 import { HeaderComponent } from '@/components/header/header.component';
+import { ROUTES } from '@/app.routes';
 
 @Component({
   selector: 'app-register',
@@ -60,7 +61,7 @@ export class RegisterComponent {
           
             this.registerForm.reset();
           
-            this.router.navigate(['/login']);
+            this.router.navigate([ROUTES.login]);
           },
 
           error: (error) => {

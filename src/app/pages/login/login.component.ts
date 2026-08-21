@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@/services/auth.service';
 import { HeaderComponent } from '@/components/header/header.component';
+import { ROUTES } from '@/app.routes';
 
 @Component({
   selector: 'app-login',
@@ -45,7 +46,7 @@ export class LoginComponent {
     this.authService.login(request).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/home']);
+        this.router.navigate([ROUTES.home]);
       },
 
       error: (error) => {

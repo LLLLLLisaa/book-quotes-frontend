@@ -1,11 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { jwtDecode } from 'jwt-decode';
 import { AuthService } from '@/services/auth.service';
+import { ROUTES } from '@/app.routes';
 
-interface TokenPayload {
-  name: string;
-}
 
 
 @Component({
@@ -18,6 +15,7 @@ interface TokenPayload {
 export class HeaderComponent {
     @Input() showNavigation = false;
     fullName = '';
+    routes = ROUTES;
 
     constructor(private authService: AuthService) {
       this.fullName = this.authService.getFullName();
