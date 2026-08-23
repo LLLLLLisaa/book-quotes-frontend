@@ -25,11 +25,23 @@
 
   <div class="py-3">
 
-    <p class="text-secondary mb-0">
+    @if (books.length === 0) {
 
-      No books yet.
-
-    </p>
+        <p class="text-secondary">
+          No books yet.
+        </p>
+      
+      } @else {
+      
+        @for (book of books; track book.id) {
+      
+          <app-book-card
+            [book]="book">
+          </app-book-card>
+      
+        }
+      
+      }
 
   </div>
 

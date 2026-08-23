@@ -14,7 +14,7 @@
             Add Book
           </h2>
 
-          <form>
+          <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
 
             <div class="mb-3">
 
@@ -24,7 +24,8 @@
 
               <input
                 type="text"
-                class="form-control">
+                class="form-control"
+                formControlName="title">
 
             </div>
 
@@ -36,7 +37,8 @@
 
               <input
                 type="text"
-                class="form-control">
+                class="form-control"
+                formControlName="author">
 
             </div>
 
@@ -48,16 +50,15 @@
 
               <input
                 type="date"
-                class="form-control">
+                class="form-control"
+                formControlName="publicationDate">
 
             </div>
 
             <button
-              type="submit"
-              class="btn btn-success w-100">
-
-              Save
-
+                type="submit"
+                class="btn btn-success w-100">
+                Save
             </button>
 
           </form>
