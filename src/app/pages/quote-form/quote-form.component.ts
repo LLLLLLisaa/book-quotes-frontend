@@ -37,7 +37,24 @@ export class QuoteFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    const id = this.route.snapshot.paramMap.get('id');
+  
+    if (id) {
+        this.isEditMode = true;
+        this.quoteId = Number(id);
+      
+        this.quoteService.getQuote(this.quoteId).subscribe({
+          next: (quote) => {
+            this.quoteForm.patchValue({
+              text: quote.text,
+              source: quote.source
+            });
+          },
+          error: (err) => {
+            console.error(err);
+          }
+        });
+    }
   }
 
   onSubmit(): void {
@@ -51,13 +68,26 @@ export class QuoteFormComponent implements OnInit {
       source: this.quoteForm.value.source!
     };
   
-    this.quoteService.addQuote(quote).subscribe({
-      next: () => {
-        this.router.navigate(['/quotes']);
-      },
-      error: (err) => {
-        console.error(err);
+    if (this.isEditMode && this.quoteId) {
+        this.quoteService.updateQuote(this.quoteId, quote).subscribe({
+          next: () => {
+            this.router.navigate(['/quotes']);
+          },
+          error: (err) => {
+            console.error(err);
+          }
+        });
+      
+        return;
       }
+      
+      this.quoteService.addQuote(quote).subscribe({
+        next: () => {
+          this.router.navigate(['/quotes']);
+        },
+        error: (err) => {
+          console.error(err);
+        }
     });
   }
 
