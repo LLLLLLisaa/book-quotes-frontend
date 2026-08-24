@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '@/components/header/header.component';
-import { BookCardComponent, Book } from '@/components/book-card/book-card.component';
+import { BookCardComponent} from '@/components/book-card/book-card.component';
+import {Book} from '@/models/book';
 import { BookService } from '@/services/book.service';
 
 
@@ -12,6 +13,7 @@ import { BookService } from '@/services/book.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
+
 export class HomeComponent implements OnInit {
 
     books: Book[] = [];
@@ -28,4 +30,15 @@ export class HomeComponent implements OnInit {
         }
       });
     }
+
+    deleteBook(id: number): void {
+        this.bookService.deleteBook(id).subscribe({
+          next: () => {
+            this.books = this.books.filter(book => book.id !== id);
+          },
+          error: (error) => {
+            console.error(error);
+          }
+        });
+      }
   }
