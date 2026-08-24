@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { BookService } from '@/services/book.service';
 import { HeaderComponent } from '@/components/header/header.component';
 
 @Component({
     selector: 'app-book-form',
     standalone: true,
-    imports: [ReactiveFormsModule,HeaderComponent],
+    imports: [ReactiveFormsModule,CommonModule,HeaderComponent],
     templateUrl: './book-form.component.html',
     styleUrls: ['./book-form.component.css']
   })
@@ -23,7 +24,13 @@ export class BookFormComponent {
     this.bookForm = this.fb.group({
       title: ['', Validators.required],
       author: ['', Validators.required],
-      publicationDate: ['']
+      publicationDate: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^\d{4}\.\d{2}\.\d{2}$/)
+        ]
+      ]
     });
   }
 
@@ -36,7 +43,7 @@ export class BookFormComponent {
     const book = {
       title: this.bookForm.value.title!,
       author: this.bookForm.value.author!,
-      publishedDate: this.bookForm.value.publicationDate!
+      publicationDate: this.bookForm.value.publicationDate!
     };
 
     this.bookService.addBook(book).subscribe({

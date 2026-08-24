@@ -52,7 +52,20 @@
                 type="text"
                 class="form-control"
                 formControlName="publicationDate"
-                placeholder="yyyy.MM.dd">
+                placeholder="yyyy.MM.dd"
+                [class.is-invalid]="
+                bookForm.get('publicationDate')?.touched &&
+                bookForm.get('publicationDate')?.invalid
+                ">
+
+            <div
+                class="invalid-feedback"
+                *ngIf="
+                bookForm.get('publicationDate')?.touched &&
+                bookForm.get('publicationDate')?.invalid
+                ">
+                Please enter the date as yyyy.MM.dd.
+            </div>
 
             </div>
 
