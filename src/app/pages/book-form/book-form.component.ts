@@ -14,7 +14,6 @@ import { HeaderComponent } from '@/components/header/header.component';
   })
 export class BookFormComponent implements OnInit{
     bookForm;
-
     bookId?: number;
     isEditMode = false;
 

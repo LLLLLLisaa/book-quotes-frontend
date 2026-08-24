@@ -25,10 +25,25 @@
 
   <div class="py-3">
 
-    <p class="text-secondary mb-0">
-      No quotes yet.
-    </p>
-
+    @if (quotes.length === 0) {
+  
+      <p class="text-secondary">
+        No quotes yet.
+      </p>
+  
+    } @else {
+  
+      @for (quote of quotes; track quote.id) {
+  
+        <app-quote-card
+          [quote]="quote"
+          (delete)="deleteQuote($event)">
+        </app-quote-card>
+  
+      }
+  
+    }
+  
   </div>
 
   <div class="text-end mt-5">
