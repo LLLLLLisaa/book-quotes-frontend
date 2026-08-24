@@ -1,21 +1,28 @@
 # Book Quotes Frontend
 
-Book Quotes Frontend is a web application built with Angular. It provides the user interface for managing books and their favorite quotes.
+Book Quotes Frontend is an Angular web application that provides the user interface for managing books and favorite quotes.
 
 ## Tech Stack
-
 - Angular 20
 - TypeScript
 - HTML
 - CSS
+- Bootstrap
+- Font Awesome
+
+## Features
+- User registration and login
+- Book CRUD
+- Quote CRUD
+- Responsive design
+- Bootstrap and Font Awesome UI
 
 ## Prerequisites
-
 - Node.js
 - npm
 - Angular CLI
 
-## Getting Started
+## Run
 
 Install dependencies:
 
@@ -29,10 +36,6 @@ Start the development server:
 ng serve
 ```
 
-Open your browser and navigate to:
+## API
 
-```
-http://localhost:4200
-```
-
-## Project Structure
+This application requires the Book Quotes Backend API to be running.
