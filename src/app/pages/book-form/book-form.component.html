@@ -10,9 +10,9 @@
 
         <div class="card-body p-4">
 
-          <h2 class="text-center mb-4">
-            Add Book
-          </h2>
+            <h2 class="text-center mb-4">
+                {{ isEditMode ? 'Edit Book' : 'Add Book' }}
+            </h2>
 
           <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
 
@@ -72,7 +72,7 @@
             <button
                 type="submit"
                 class="btn btn-success w-100">
-                Save
+                {{ isEditMode ? 'Save Changes' : 'Save' }}
             </button>
 
           </form>
