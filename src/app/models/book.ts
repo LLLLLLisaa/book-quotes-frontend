@@ -4,4 +4,10 @@ export interface Book {
     author: string;
     publicationDate: string;
   }
+
+export type BookRequest = {
+  title: Book['title'];
+  author: Book['author'];
+  publishedDate: string;
+};
   

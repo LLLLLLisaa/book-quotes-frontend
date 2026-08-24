@@ -36,7 +36,7 @@ export class BookFormComponent {
     const book = {
       title: this.bookForm.value.title!,
       author: this.bookForm.value.author!,
-      publicationDate: this.bookForm.value.publicationDate!
+      publishedDate: this.bookForm.value.publicationDate!
     };
 
     this.bookService.addBook(book).subscribe({

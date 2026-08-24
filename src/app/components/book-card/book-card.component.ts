@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 export interface Book {
   id: number;
@@ -11,7 +12,7 @@ export interface Book {
 @Component({
   selector: 'app-book-card',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,DatePipe],
   templateUrl: './book-card.component.html',
   styleUrl: './book-card.component.css'
 })
