@@ -33,14 +33,37 @@
   
     } @else {
   
-      @for (quote of quotes; track quote.id) {
-  
+      @for (quote of quotes.slice(0, visibleCount); track quote.id) {
+
         <app-quote-card
           [quote]="quote"
           (delete)="deleteQuote($event)">
         </app-quote-card>
-  
+      
       }
+      <div class="d-flex justify-content-center gap-2 mt-4">
+
+        <button
+          type="button"
+          class="btn btn-outline-info"
+          (click)="showMore()"
+          [disabled]="visibleCount >= quotes.length">
+      
+          More
+      
+        </button>
+      
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          (click)="hideQuotes()"
+          [disabled]="visibleCount <= 5">
+      
+          Hide
+      
+        </button>
+      
+      </div>
   
     }
   

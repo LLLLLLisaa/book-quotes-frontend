@@ -22,6 +22,17 @@ export class QuotesComponent implements OnInit {
 
   quotes: Quote[] = [];
 
+  visibleCount = 5;
+
+  showMore(): void {
+    this.visibleCount += 5;
+  }
+
+  hideQuotes(): void {
+    this.visibleCount = 5;
+  }
+  
+
   constructor(
     private quoteService: QuoteService
   ) {}
