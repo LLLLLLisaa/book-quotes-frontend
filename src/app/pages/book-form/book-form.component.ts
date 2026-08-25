@@ -1,5 +1,9 @@
-import { Component,OnInit } from '@angular/core';
-import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder,
+        Validators,
+        ReactiveFormsModule,
+        AbstractControl,
+        ValidationErrors} from '@angular/forms';
 import { ActivatedRoute,Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { BookService } from '@/services/book.service';
@@ -31,7 +35,9 @@ export class BookFormComponent implements OnInit{
         '',
         [
           Validators.required,
-          Validators.pattern(/^\d{4}\.\d{2}\.\d{2}$/)
+          Validators.pattern(/^\d{4}\.\d{2}\.\d{2}$/),
+
+          this.futureDateValidator.bind(this)
         ]
       ]
     });
@@ -94,5 +100,22 @@ export class BookFormComponent implements OnInit{
         console.error(err);
       }
     });
+  }
+
+  futureDateValidator(control: AbstractControl): ValidationErrors | null {
+    const value = control.value;
+  
+    if (!value) {
+      return null;
+    }
+  
+    const [year, month, day] = value.split('.').map(Number);
+  
+    const inputDate = new Date(year, month - 1, day);
+  
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+  
+    return inputDate > today ? { futureDate: true } : null;
   }
 }
