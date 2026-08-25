@@ -39,3 +39,14 @@ ng serve
 ## API
 
 This application requires the Book Quotes Backend API to be running.
+
+## Live Demo
+
+https://book-quotes-frontend.vercel.app
+
+## Backend
+
+This application requires the Book Quotes Backend API.
+
+Backend repository:
+https://github.com/LLLLLLisaa/book-quotes-backend
