@@ -34,7 +34,7 @@ token: string;
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:5266/api/auth';
+  private apiUrl = 'https://book-quotes-backend-production.up.railway.app/api/auth';
 
   constructor(private http: HttpClient) {}
 

@@ -8,7 +8,7 @@ import { Book} from '@/models/book';
 })
 export class BookService {
 
-  private apiUrl = 'http://localhost:5266/api/books';
+  private apiUrl = 'https://book-quotes-backend-production.up.railway.app/api/books';
 
   constructor(private http: HttpClient) {}
 

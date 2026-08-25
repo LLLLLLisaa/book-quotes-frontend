@@ -9,7 +9,7 @@ import { Quote } from '@/models/quote';
 })
 export class QuoteService {
 
-  private apiUrl = 'http://localhost:5266/api/quotes';
+    private apiUrl = 'https://book-quotes-backend-production.up.railway.app/api/quotes';
 
   constructor(private http: HttpClient) {}
 
