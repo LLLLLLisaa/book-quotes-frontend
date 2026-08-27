@@ -15,6 +15,7 @@ import { AuthService } from '@/services/auth.service';
 export class HeaderComponent {
     @Input() showNavigation = false;
     fullName = '';
+    isDarkMode = false;
 
     constructor(private authService: AuthService,private location: Location) {
       this.fullName = this.authService.getFullName();
@@ -22,5 +23,13 @@ export class HeaderComponent {
 
     goBack(): void {
       this.location.back();
+    }
+
+    toggleTheme(): void {
+      this.isDarkMode = !this.isDarkMode;
+      document.documentElement.setAttribute(
+        'data-bs-theme',
+        this.isDarkMode ? 'dark' : 'light'
+      );
     }
   }
