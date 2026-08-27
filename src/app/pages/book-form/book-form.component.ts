@@ -118,4 +118,8 @@ export class BookFormComponent implements OnInit{
   
     return inputDate > today ? { futureDate: true } : null;
   }
+
+  cancel(): void {
+    this.router.navigate(['/home']);
+  }
 }

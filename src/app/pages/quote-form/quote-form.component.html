@@ -43,13 +43,26 @@
 
             </div>
 
-            <button
-              type="submit"
-              class="btn btn-success w-100">
+            <div class="d-flex gap-3">
 
-              {{ isEditMode ? 'Save Changes' : 'Save' }}
-
-            </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-secondary flex-fill"
+                    (click)="cancel()">
+              
+                    Cancel
+              
+                </button>
+              
+                <button
+                    type="submit"
+                    class="btn btn-primary flex-fill">
+              
+                    {{ isEditMode ? 'Save Changes' : 'Save' }}
+              
+                </button>
+              
+              </div>
 
           </form>
 
