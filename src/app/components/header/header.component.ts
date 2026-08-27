@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Location } from '@angular/common';
 import { AuthService } from '@/services/auth.service';
+import { ThemeService } from '@/services/theme.service';
 
 
 
@@ -15,9 +16,9 @@ import { AuthService } from '@/services/auth.service';
 export class HeaderComponent {
     @Input() showNavigation = false;
     fullName = '';
-    isDarkMode = false;
+    
 
-    constructor(private authService: AuthService,private location: Location) {
+    constructor(private authService: AuthService,private location: Location,public themeService:ThemeService) {
       this.fullName = this.authService.getFullName();
     }
 
@@ -26,10 +27,6 @@ export class HeaderComponent {
     }
 
     toggleTheme(): void {
-      this.isDarkMode = !this.isDarkMode;
-      document.documentElement.setAttribute(
-        'data-bs-theme',
-        this.isDarkMode ? 'dark' : 'light'
-      );
+      this.themeService.toggleTheme();
     }
   }

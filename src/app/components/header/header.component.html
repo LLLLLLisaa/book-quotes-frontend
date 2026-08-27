@@ -18,7 +18,7 @@
             (click)="toggleTheme()"
             aria-label="Toggle theme">
 
-            @if (isDarkMode) {
+            @if (themeService.isDarkMode) {
               <i class="fa-solid fa-moon fs-5"></i>
             } @else {
               <i class="fa-solid fa-sun fs-5"></i>
