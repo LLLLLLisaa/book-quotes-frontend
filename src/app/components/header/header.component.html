@@ -2,15 +2,15 @@
 
   <div class="container">
 
-    @if (showNavigation) {
-
       <div class="d-flex justify-content-end mb-3">
 
         <div class="d-flex align-items-center gap-3">
 
+          @if (showNavigation) {
           <span class="fw-semibold">
               Welcome, {{ fullName }}
           </span>
+        }
 
           <button
             type="button"
@@ -27,6 +27,7 @@
 
 
       
+          @if (showNavigation) {
           <a href="#" class="logout-link">
       
               <i class="fa-solid fa-right-from-bracket me-1"></i>
@@ -34,12 +35,13 @@
               Logout
       
           </a>
+        }
       
         </div>
 
       </div>
 
-    }
+    
 
     <div class="header-bottom">
 
